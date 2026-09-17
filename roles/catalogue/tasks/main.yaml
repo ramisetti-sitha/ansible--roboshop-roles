@@ -1,10 +1,14 @@
 - name: app setup 
+  tags:
+   - deployment
   ansible.builtin.import_role:
    name: common
    tasks_from: app-setup.yaml
 
 - name: nodejs setup
-  ansible.builtin.import_role:
+  tags:
+   - deployment
+  ansible.builtin.include_role:
    name: common
    tasks_from: nodejs-setup.yaml
 
@@ -36,6 +40,8 @@
   when: catalogue_output.stdout | int < 0
 
 - name: start catalogue
+  tags: 
+   - deployment
   ansible.builtin.service:
    name: catalogue
    enabled: yes
