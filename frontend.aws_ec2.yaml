@@ -8,6 +8,10 @@ filters:
  tag:Name: frontend-dev
 compose:
  ansible-hosts: private-ip-address
-keyed_group:
+keyed_groups:
  - separator: ''
    key: tags.Name | regex_replace('-.*$', '')
+# keyed_groups:
+# - separator: ''
+#   # name of the group is frontend
+#   key: tags.Name | regex_replace('-.*$', '')
